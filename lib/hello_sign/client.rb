@@ -185,7 +185,7 @@ module HelloSign
         response.body
       elsif response.body.strip.empty?
         {}
-      else
+      elsif response['content-type'] == 'application/json'
         MultiJson.load response.body.strip
       end
     end
